@@ -631,7 +631,9 @@
  * heater. If your configuration is significantly different than this and you don't understand
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  */
-//#define PIDTEMPBED
+// @snfx bed temperatures instability may lead to vertical lines; bang bang typically causes instabilities
+//       Note that default values are probably pretty bad, so need to auto-tune with M303 first (or in the LCD menu)
+#define PIDTEMPBED
 
 //#define BED_LIMIT_SWITCHING
 
