@@ -786,7 +786,8 @@
 // Specify here all the endstop connectors that are connected to any endstop or probe.
 // Almost all printers will be using one per axis. Probes will use one or more of the
 // extra connectors. Leave undefined any used for non-endstop and non-probe purposes.
-// @snfx need to put x/y on min in regard of X_HOME_DIR and Y_HOME_DIR values
+// @snfx need to put x/y on min in regard of X_HOME_DIR and Y_HOME_DIR values;
+//       note that if the values are not coordinated it will fail at compile time, which is nice
 #define USE_XMIN_PLUG
 #define USE_YMIN_PLUG
 #define USE_ZMIN_PLUG
@@ -1335,8 +1336,9 @@
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR false
-#define INVERT_Y_DIR false
+// @snfx because we want the home to be (0,0,0), but motors are wired backward for that
+#define INVERT_X_DIR true
+#define INVERT_Y_DIR true
 #define INVERT_Z_DIR false
 //#define INVERT_I_DIR false
 //#define INVERT_J_DIR false
@@ -1375,7 +1377,8 @@
 
 // Direction of endstops when homing; 1=MAX, -1=MIN
 // :[-1,1]
-// @snfx we want the home to be 0, and that's where the probes are
+// @snfx we want the home to be 0, and that's where the probes are;
+//       beware that motors are running in the right direction; check wiring or INVERT_X_DIR/INVERT_Y_DIR
 #define X_HOME_DIR -1
 #define Y_HOME_DIR -1
 #define Z_HOME_DIR -1
