@@ -786,15 +786,15 @@
 // Specify here all the endstop connectors that are connected to any endstop or probe.
 // Almost all printers will be using one per axis. Probes will use one or more of the
 // extra connectors. Leave undefined any used for non-endstop and non-probe purposes.
-// TODO(@snfx): maybe not needed to put x/y on min in regard of X_HOME_DIR and Y_HOME_DIR
-// #define USE_XMIN_PLUG
-// #define USE_YMIN_PLUG
+// @snfx need to put x/y on min in regard of X_HOME_DIR and Y_HOME_DIR values
+#define USE_XMIN_PLUG
+#define USE_YMIN_PLUG
 #define USE_ZMIN_PLUG
 //#define USE_IMIN_PLUG
 //#define USE_JMIN_PLUG
 //#define USE_KMIN_PLUG
-#define USE_XMAX_PLUG
-#define USE_YMAX_PLUG
+// #define USE_XMAX_PLUG
+// #define USE_YMAX_PLUG
 //#define USE_ZMAX_PLUG
 //#define USE_IMAX_PLUG
 //#define USE_JMAX_PLUG
@@ -1375,7 +1375,7 @@
 
 // Direction of endstops when homing; 1=MAX, -1=MIN
 // :[-1,1]
-// TODO(@snfx): not sure if -1 or 1, need to test carefully
+// @snfx we want the home to be 0, and that's where the probes are
 #define X_HOME_DIR -1
 #define Y_HOME_DIR -1
 #define Z_HOME_DIR -1
