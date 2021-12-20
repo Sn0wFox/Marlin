@@ -9,7 +9,7 @@
  */
 #pragma once
 
-#define CUSTOM_BOOTSCREEN_TIMEOUT   2100
+#define CUSTOM_BOOTSCREEN_TIMEOUT 3000
 
 /**
  * Made with Marlin Bitmap Converter
