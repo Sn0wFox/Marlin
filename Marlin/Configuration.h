@@ -608,9 +608,10 @@
     #define DEFAULT_Ki_LIST {   1.54,   1.54 }
     #define DEFAULT_Kd_LIST {  76.55,  76.55 }
   #else
-    #define DEFAULT_Kp  21.73
-    #define DEFAULT_Ki   1.54
-    #define DEFAULT_Kd  76.55
+    // @snfx values from PID autotune with bondtech firmware
+    #define DEFAULT_Kp  19.00
+    #define DEFAULT_Ki   1.60
+    #define DEFAULT_Kd  56.60
   #endif
 #endif // PIDTEMP
 
