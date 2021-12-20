@@ -2213,10 +2213,10 @@
 //
 // Note: Test audio output with the G-Code:
 //  M300 S<frequency Hz> P<duration ms>
-//
-// TODO(@snfx): this could be cool to have a smoother tone
-//#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 2
-//#define LCD_FEEDBACK_FREQUENCY_HZ 5000
+// @snfx 2ms is not enough with A440
+#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 3
+// @snfx A440
+#define LCD_FEEDBACK_FREQUENCY_HZ 440
 
 //=============================================================================
 //======================== LCD / Controller Selection =========================
