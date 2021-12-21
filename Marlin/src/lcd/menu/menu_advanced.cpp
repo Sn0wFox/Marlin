@@ -192,7 +192,8 @@ void menu_backlash();
       #endif
       default: tune_temp = autotune_temp[hid]; break;
     }
-    sprintf_P(cmd, PSTR("M303 U1 E%i S%i"), hid, tune_temp);
+    // @snfx 10 cycles should be more precise than default 5 (unset)
+    sprintf_P(cmd, PSTR("M303 C10 U1 E%i S%i"), hid, tune_temp);
     queue.inject(cmd);
     ui.return_to_status();
   }
