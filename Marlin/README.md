@@ -12,8 +12,13 @@ To install [platform.io](https://platformio.org/):
 ```shell
 pip install -U platformio
 ```
+or
+```shell
+wget https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py
+python get-platformio.py
+```
 
-(tested with python 3.9.1 and pip 20.2.3).
+(last method tested with python 3.9.1 and pip 20.2.3).
 
 All commits are prefixed with `snfx`.
 All Changes are annotated with a comment `// @snfx [description]`. They include:
