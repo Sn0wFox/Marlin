@@ -23,6 +23,12 @@ Piece of doc for custom config.
   * ~~Configuration_adv.h~~ (not for now)
   * some cpp files, such as `src/lcd/menu/menu_advanced.cpp`
 
+⚠️ You should take a look at the default settings (use the correct branch):
+* [basic](https://github.com/MarlinFirmware/Configurations/blob/import-2.1.x/config/examples/Creality/Ender-5%20Pro/CrealityV427/Configuration.h)
+* [advanced](https://github.com/MarlinFirmware/Configurations/blob/import-2.1.x/config/examples/Creality/Ender-5%20Pro/CrealityV427/Configuration_adv.h)
+
+and compare them with the current ones. You can't just start with the default ones because they are not correctly up-to-date.
+
 ### Upgrade firmware
 
 Either rebase is easy enough and we go for it,
