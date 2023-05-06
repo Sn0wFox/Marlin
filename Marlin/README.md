@@ -20,7 +20,7 @@ Piece of doc for custom config.
 * All commits are prefixed with `snfx:`.
 * All Changes are annotated with a comment `// @snfx [description]`. They include:
   * `Configuration.h`
-  * ~~Configuration_adv.h~~ (not for now)
+  * `Configuration_adv.h` (for adjustments and board specific settings)
   * some cpp files, such as `src/lcd/menu/menu_advanced.cpp`
 
 ⚠️ You should take a look at the default settings (use the correct branch):
