@@ -653,7 +653,8 @@
 #define HEATER_5_MAXTEMP 275
 #define HEATER_6_MAXTEMP 275
 #define HEATER_7_MAXTEMP 275
-#define BED_MAXTEMP      150
+// @snfx default for ender 5 pro
+#define BED_MAXTEMP      125
 #define CHAMBER_MAXTEMP  60
 
 /**
@@ -790,9 +791,6 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 10.00
-  #define DEFAULT_bedKi .023
-  #define DEFAULT_bedKd 305.4
   // @snfx values after 20 cycles of PID autotune at 65C
   //       (starting from the defautls in creality firmware example, way off)
   // TODO(@snfx): redo with new bed setup
@@ -858,8 +856,9 @@
   #define PID_FUNCTIONAL_RANGE 10 // If the temperature difference between the target temperature and the actual temperature
                                   // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 
-  //#define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of flash)
-  //#define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of flash)
+  // @snfx convenient
+  #define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of flash)
+  #define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of flash)
 #endif
 
 // @section safety
@@ -1219,15 +1218,16 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-// @snfx 800 for z, 415 recommended and pretty correct for Bondtech BMG-M
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 415 }
+// @snfx 400 for v2 z, 415 recommended and pretty correct for Bondtech BMG-M
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 415 }
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 25 }
+// @snfx
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 150 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1767,8 +1767,8 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-// @snfx with ddx v2
-#define Z_MAX_POS 300
+// @snfx with ddx v2 + F8 silent case upgrade; better safe than sorry
+#define Z_MAX_POS 280
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
 //#define J_MIN_POS 0
@@ -1969,7 +1969,7 @@
   // @snfx don't want to burn my hands and this has minimal impact
   //#define LEVELING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
   // @snfx
-  #define LEVELING_BED_TEMP     60
+  #define LEVELING_BED_TEMP     65
 #endif
 
 /**
@@ -2535,7 +2535,8 @@
  *
  * :['JAPANESE', 'WESTERN', 'CYRILLIC']
  */
-#define DISPLAY_CHARSET_HD44780 JAPANESE
+// @snfx default for the ender 5 pro
+#define DISPLAY_CHARSET_HD44780 WESTERN
 
 /**
  * Info Screen Style (0:Classic, 1:Průša)
@@ -2550,7 +2551,8 @@
  * SD Card support is disabled by default. If your controller has an SD slot,
  * you must uncomment the following option or it won't work.
  */
-//#define SDSUPPORT
+// @snfx
+#define SDSUPPORT
 
 /**
  * SD CARD: ENABLE CRC
@@ -2620,7 +2622,8 @@
 //
 // This option increases encoder samples to filter out phantom encoder clicks caused by EMI noise.
 //
-//#define ENCODER_NOISE_FILTER
+// @snfx enabled by default for the ender 5 pro and 4.2.7 board
+#define ENCODER_NOISE_FILTER
 #if ENABLED(ENCODER_NOISE_FILTER)
   #define ENCODER_SAMPLES 10
 #endif
@@ -2640,7 +2643,8 @@
 // If you have a speaker that can produce tones, enable it here.
 // By default Marlin assumes you have a buzzer with a fixed frequency.
 //
-//#define SPEAKER
+// @snfx
+#define SPEAKER
 
 //
 // The duration and frequency for the UI feedback sound.
