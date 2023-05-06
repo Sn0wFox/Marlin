@@ -793,7 +793,7 @@
   #define DEFAULT_bedKd 305.4
   // @snfx values after 20 cycles of PID autotune at 65C
   //       (starting from the defautls in creality firmware example, way off)
-  // @snfx TODO: redo with new bed setup
+  // TODO(@snfx): redo with new bed setup
   #define DEFAULT_bedKp 103.30
   #define DEFAULT_bedKi 20.17
   #define DEFAULT_bedKd 352.50
