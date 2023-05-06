@@ -885,7 +885,8 @@
 //#define HOMING_BACKOFF_POST_MM { 2, 2, 2 }  // (linear=mm, rotational=°) Backoff from endstops after homing
 //#define XY_COUNTERPART_BACKOFF_MM 0         // (mm) Backoff X after homing Y, and vice-versa
 
-//#define QUICK_HOME                          // If G28 contains XY do a diagonal move first
+// @snfx default for the ender 5 pro
+#define QUICK_HOME                          // If G28 contains XY do a diagonal move first
 //#define HOME_Y_BEFORE_X                     // If G28 contains XY home Y before X
 //#define HOME_Z_FIRST                        // Home Z first. Requires a real endstop (not a probe).
 //#define CODEPENDENT_XY_HOMING               // If X/Y can't home without homing Y/X first
@@ -1349,7 +1350,8 @@
 // @section lcd
 
 #if HAS_MANUAL_MOVE_MENU
-  #define MANUAL_FEEDRATE { 50*60, 50*60, 4*60, 2*60 } // (mm/min) Feedrates for manual moves along X, Y, Z, E from panel
+  // @snfx speed up Z and E a bit
+  #define MANUAL_FEEDRATE { 50*60, 50*60, 7*60, 5*60 } // (mm/min) Feedrates for manual moves along X, Y, Z, E from panel
   #define FINE_MANUAL_MOVE 0.025    // (mm) Smallest manual move (< 0.1mm) applying to Z on most machines
   #if IS_ULTIPANEL
     #define MANUAL_E_MOVES_RELATIVE // Display extruder move distance rather than "position"
@@ -1415,7 +1417,8 @@
   #endif
 
   // Include a page of printer information in the LCD Main Menu
-  //#define LCD_INFO_MENU
+  // @snfx default for the ender 5 pro
+  #define LCD_INFO_MENU
   #if ENABLED(LCD_INFO_MENU)
     //#define LCD_PRINTER_INFO_IS_BOOTSCREEN // Show bootscreen(s) instead of Printer Info pages
   #endif
@@ -1445,7 +1448,8 @@
   #endif
 
   // Scroll a longer status message into view
-  //#define STATUS_MESSAGE_SCROLLING
+  // @snfx default for the ender 5 pro
+  #define STATUS_MESSAGE_SCROLLING
 
   // Apply a timeout to low-priority status messages
   //#define STATUS_MESSAGE_TIMEOUT_SEC 30 // (seconds)
@@ -1640,7 +1644,8 @@
   //#define LONG_FILENAME_WRITE_SUPPORT   // Create / delete files with long filenames via M28, M30, and Binary Transfer Protocol
   //#define M20_TIMESTAMP_SUPPORT         // Include timestamps by adding the 'T' flag to M20 commands
 
-  //#define SCROLL_LONG_FILENAMES         // Scroll long filenames in the SD card menu
+  // @snfx default for the ender 5 pro
+  #define SCROLL_LONG_FILENAMES         // Scroll long filenames in the SD card menu
 
   //#define SD_ABORT_NO_COOLDOWN          // Leave the heaters on after Stop Print (not recommended!)
 
@@ -2064,6 +2069,7 @@
  *
  * Warning: Does not respect endstops!
  */
+// @snfx don't want this
 //#define BABYSTEPPING
 #if ENABLED(BABYSTEPPING)
   //#define INTEGRATED_BABYSTEPPING         // EXPERIMENTAL integration of babystepping into the Stepper ISR
@@ -2096,6 +2102,7 @@
 
 // @section extruder
 
+// TODO(@snfx) check this, should work with s-curve acceleration with EXPERIMENTAL_SCURVE
 /**
  * Linear Pressure Control v1.5
  *
@@ -2732,6 +2739,8 @@
   #define INTERPOLATE      true
 
   #if AXIS_IS_TMC_CONFIG(X)
+    // @snfx pretty sure motors are rated for 1A (or even maybe 1.5A) RMS,
+    //       but creality default says 580mA... so let's leave it at 800 (marlin default) to cut it in half
     #define X_CURRENT       800        // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_CURRENT_HOME  X_CURRENT  // (mA) RMS current for homing. (Typically lower than *_CURRENT.)
     #define X_MICROSTEPS     16        // 0..256
@@ -2752,6 +2761,8 @@
   #endif
 
   #if AXIS_IS_TMC_CONFIG(Y)
+    // @snfx pretty sure motors are rated for 1A (or even maybe 1.5A) RMS,
+    //       but creality default says 650mA... so let's leave it at 800 (marlin default) to cut it in half
     #define Y_CURRENT       800
     #define Y_CURRENT_HOME  Y_CURRENT
     #define Y_MICROSTEPS     16
@@ -2772,6 +2783,8 @@
   #endif
 
   #if AXIS_IS_TMC_CONFIG(Z)
+    // @snfx pretty sure motors are rated for 1A (or even maybe 1.5A) RMS,
+    //       but creality default says 650mA... so let's leave it at 800 (marlin default) to cut it in half
     #define Z_CURRENT       800
     #define Z_CURRENT_HOME  Z_CURRENT
     #define Z_MICROSTEPS     16
@@ -2872,6 +2885,8 @@
   #endif
 
   #if AXIS_IS_TMC_CONFIG(E0)
+    // @snfx pretty sure motors are rated for 1A (or even maybe 1.5A) RMS,
+    //       but creality default says 650mA... so let's leave it at 800 (marlin default) to cut it in half
     #define E0_CURRENT      800
     #define E0_MICROSTEPS    16
     #define E0_RSENSE         0.11
@@ -3063,7 +3078,8 @@
    * Define your own with:
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
-  #define CHOPPER_TIMING CHOPPER_DEFAULT_12V        // All axes (override below)
+  // @snfx default for ender 5 pro is 24V
+  #define CHOPPER_TIMING CHOPPER_DEFAULT_24V        // All axes (override below)
   //#define CHOPPER_TIMING_X  CHOPPER_TIMING        // For X Axes (override below)
   //#define CHOPPER_TIMING_X2 CHOPPER_TIMING_X
   //#define CHOPPER_TIMING_Y  CHOPPER_TIMING        // For Y Axes (override below)
