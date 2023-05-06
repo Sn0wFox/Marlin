@@ -11,7 +11,7 @@ Piece of doc for custom config.
 2. Compile the firmware:
     ```shell
     pio run
-    open .pio\build\STM32F103RET6_creality
+    open .pio/build/STM32F103RE_creality
     ```
 3. Load the .bin in the SD card only, put it in, plug in... voilà.
 
