@@ -1289,7 +1289,10 @@
  * vibration and surface artifacts. The algorithm adapts to provide the best possible step smoothing at the
  * lowest stepping frequencies.
  */
-//#define ADAPTIVE_STEP_SMOOTHING
+// @snfx enabling this to see if this reduces the axis noise I hear during diagonal moves
+//       see https://youtu.be/EKGsOKnv5XI?t=333 (explanation by marlin creator, because not a lot of resources online;
+//       he also says input shaping is smoother with this enabled)
+#define ADAPTIVE_STEP_SMOOTHING
 
 /**
  * Custom Microstepping
