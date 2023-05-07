@@ -404,6 +404,10 @@
 
 // @section psu control
 
+
+// 14:10 firmware update
+
+
 /**
  * Power Supply Control
  *
@@ -770,12 +774,11 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  // @snfx values after 20 cycles of PID autotune at 65C
-  //       (starting from the defautls in creality firmware example, way off)
-  // TODO(@snfx): redo with new bed setup
-  #define DEFAULT_bedKp 103.30
-  #define DEFAULT_bedKi 20.17
-  #define DEFAULT_bedKd 352.50
+  // @snfx values after 50 cycles of PID autotune at 65C with the new thermal pads under the bed
+  //       starting with previous values from previous autotuned bed setup
+  #define DEFAULT_bedKp 143.50
+  #define DEFAULT_bedKi 28.03
+  #define DEFAULT_bedKd 489.90
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
