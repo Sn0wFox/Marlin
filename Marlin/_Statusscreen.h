@@ -7,6 +7,14 @@
  * Use the Marlin Bitmap Converter to make your own:
  * https://marlinfw.org/tools/u8glib/converter.html
  */
+
+/**
+ * Made with Marlin Bitmap Converter
+ * https://marlinfw.org/tools/u8glib/converter.html
+ *
+ * This bitmap from the file 'snfx-fox-48.png'
+ */
+
 #pragma once
 
 // Use default bitmaps
@@ -20,13 +28,6 @@
     #define STATUS_HEATERS_X    40
   #define STATUS_BED_X          81
 #endif
-
-/**
- * Made with Marlin Bitmap Converter
- * https://marlinfw.org/tools/u8glib/converter.html
- *
- * This bitmap from the file 'snfx-fox-48.png'
- */
 
 #define STATUS_LOGO_WIDTH 48
 
@@ -59,4 +60,3 @@ const unsigned char status_logo_bmp[] PROGMEM = {
         B00000001,B10000000,B00111111,B11111000,B00000000,B00000000,
         B00000000,B11000000,B11111111,B11110000,B00000000,B00000000
 };
-
