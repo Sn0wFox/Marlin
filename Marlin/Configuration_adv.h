@@ -1089,6 +1089,12 @@
  *  X<1>         Set the given parameters only for the X axis.
  *  Y<1>         Set the given parameters only for the Y axis.
  */
+// TODO(@snfx): enable this after other tings are proven to be working
+//              Requires (quite heavy) calibration process. See https://marlinfw.org/docs/gcode/M593.html
+//              Also tuning needs to be re-done after anything affecting resonance:
+//                - mass change (including non moving parts)
+//                - belt tension
+//                - frame rigidly
 //#define INPUT_SHAPING_X
 //#define INPUT_SHAPING_Y
 #if EITHER(INPUT_SHAPING_X, INPUT_SHAPING_Y)
