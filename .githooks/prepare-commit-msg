@@ -1,0 +1,76 @@
+#!/usr/bin/env sh
+
+# Move to the directory where the script is located,
+# so it is executed correctly from wherever it's called.
+#
+# This syntax should work both using bash and standard sh
+cd "$( dirname $( realpath $0 ) )" >/dev/null 2>&1 || exit 1
+cd ..
+
+
+IS_AMEND=$(ps -ocommand= -p $PPID | grep -e '--amend');
+
+
+match() {
+  val=$1
+  search=$2
+
+  case $val in
+    *${search}*)
+      return 0
+    ;;
+  esac
+
+  return 1
+}
+
+get_tags() {
+  echo "$1" | grep -E '^[a-z0-9/]+:' | sed -E 's;^([a-z0-9/]+):.*;\1;' | sed -E 's@([^/]+)/(v[0-9]+)@\1;\2@'
+}
+
+get_msg() {
+  echo "$1" | sed -E 's;^([a-z/]+: )?(.*);\2;'
+}
+
+
+MSG=$(cat $1)
+[ -z "${MSG}" ] && exit 0     # keep empty messages failures
+[ "$2" == "merge" ] && exit 0 # don't prepend anything for merge commits
+
+FILES=$(git diff --staged --name-only)
+MATCHES=$(get_tags "${MSG}")
+
+# In case of amending the modified list of files is the one relative to the previous commit
+# and the prefixes may need to be retrieved from the commit itself (--amend without -m)
+if [ -n "$IS_AMEND" ]; then
+    FILES=$(git diff HEAD^ --staged --name-only)
+
+    if [ -z "${MATCHES}" ]; then
+        MATCHES="$(get_tags `git show -s --format=%B HEAD`)"
+    fi
+fi
+
+# Prefix existing prefixes by a / to standardize flow with non-existing prefixes
+if [ -n "${MATCHES}" ]; then
+    MATCHES="/${MATCHES}"
+fi
+
+# Extract the message itself (without prefixes) no matter what, to:
+#   - avoid duplicated prefixes
+#   - allow to force / add custom prefixes
+MSG=$(get_msg "${MSG}")
+
+
+if [ ! `match "${MATCHES}" "snfx"` ]; then
+    MATCHES="${MATCHES}/snfx"
+fi
+
+MATCHES=$(echo "${MATCHES}" | sed 's@;@/@' | cut -c2-)
+TAG=
+if [ -z "${MATCHES}" ]; then
+  TAG=common
+else
+  TAG=$(echo "${MATCHES}" | tr '/' '\n' | sort | uniq | tr '\n' '/' | rev | cut -c2- | rev)
+fi
+
+echo "${TAG}: ${MSG}" > $1
