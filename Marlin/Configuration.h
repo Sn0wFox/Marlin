@@ -2607,7 +2607,8 @@
 //
 // Add individual axis homing items (Home X, Home Y, and Home Z) to the LCD menu.
 //
-// @snfx convenient
+// @snfx convenient, but note that on 4.2.7 board this will engage ALL steppers
+//       because all wired together
 #define INDIVIDUAL_AXIS_HOMING_MENU
 #define INDIVIDUAL_AXIS_HOMING_SUBMENU
 
