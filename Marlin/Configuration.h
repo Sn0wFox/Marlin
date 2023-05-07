@@ -1912,7 +1912,8 @@
 //#define AUTO_BED_LEVELING_LINEAR
 //#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
-//#define MESH_BED_LEVELING
+// @snfx let's ease the process
+#define MESH_BED_LEVELING
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable one of
@@ -1928,7 +1929,8 @@
 // @snfx cold bed level sucks a bit
 #define PREHEAT_BEFORE_LEVELING
 #if ENABLED(PREHEAT_BEFORE_LEVELING)
-  // @snfx don't want to burn my hands and this has minimal impact
+  // @snfx don't want to burn my hands and this has minimal impact beside thermal expansion of the nozzle,
+  //       which is mostly compensated by the thickness of a papersheet
   //#define LEVELING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
   // @snfx
   #define LEVELING_BED_TEMP     65
@@ -2045,7 +2047,8 @@
   //=================================== Mesh ==================================
   //===========================================================================
 
-  #define MESH_INSET 10          // Set Mesh bounds as an inset region of the bed
+  // @snfx 15mm seems more reasonable
+  #define MESH_INSET 15          // Set Mesh bounds as an inset region of the bed
   #define GRID_MAX_POINTS_X 3    // Don't use more than 7 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
@@ -2057,7 +2060,8 @@
  * Add a bed leveling sub-menu for ABL or MBL.
  * Include a guided procedure if manual probing is enabled.
  */
-//#define LCD_BED_LEVELING
+// @snfx let's ease the process
+#define LCD_BED_LEVELING
 
 #if ENABLED(LCD_BED_LEVELING)
   #define MESH_EDIT_Z_STEP  0.025 // (mm) Step size while manually probing Z axis.
