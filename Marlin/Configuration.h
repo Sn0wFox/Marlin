@@ -1470,7 +1470,6 @@
 
 #endif // Z_PROBE_ALLEN_KEY
 
-// TODO(@snfx): check this
 /**
  * Nozzle-to-Probe offsets { X, Y, Z }
  *
