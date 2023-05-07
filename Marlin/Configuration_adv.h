@@ -2115,7 +2115,10 @@
 
 // @section extruder
 
-// TODO(@snfx) check this, should work with s-curve acceleration with EXPERIMENTAL_SCURVE
+// TODO(@snfx) check this:
+//  - known bug with my drivers, but apparently fixed on -bugfixes branch: https://github.com/MarlinFirmware/Marlin/issues/16076
+//  - should work with s-curve acceleration with EXPERIMENTAL_SCURVE (also https://github.com/MarlinFirmware/Marlin/issues/22547)
+//  - not sure the board can handle both linear advance and input shaping, because those are heavy computations
 /**
  * Linear Pressure Control v1.5
  *
