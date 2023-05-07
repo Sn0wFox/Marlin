@@ -7,18 +7,17 @@
  * Use the Marlin Bitmap Converter to make your own:
  * https://marlinfw.org/tools/u8glib/converter.html
  */
+
+/**
+* Made with Marlin Bitmap Converter
+* https://marlinfw.org/tools/u8glib/converter.html
+*
+* This bitmap from the file 'snfx-fox-flag.png'
+*/
+
 #pragma once
 
 #define CUSTOM_BOOTSCREEN_TIMEOUT 3000
-
-/**
- * Made with Marlin Bitmap Converter
- * https://marlinfw.org/tools/u8glib/converter.html
- *
- * This bitmap from the file 'snfx-fox-flag.png'
- */
-#pragma once
-
 #define CUSTOM_BOOTSCREEN_BMPWIDTH  92
 
 const unsigned char custom_start_bmp[] PROGMEM = {
@@ -87,4 +86,3 @@ const unsigned char custom_start_bmp[] PROGMEM = {
         B00000000,B00000000,B00010000,B00000000,B01111111,B11111111,B11111111,B11110000,B00000000,B00000000,B00000000,B00000000,
         B00000000,B00000000,B00010000,B00000000,B01111111,B11111111,B11111111,B11110000,B00000000,B00000000,B00000000,B00000000
 };
-
