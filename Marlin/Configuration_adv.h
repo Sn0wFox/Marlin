@@ -563,8 +563,11 @@
  * gets it spinning reliably for a short time before setting the requested speed.
  * (Does not work on Sanguinololu with FAN_SOFT_PWM.)
  */
-//#define FAN_KICKSTART_TIME  100  // (ms)
-//#define FAN_KICKSTART_POWER 180  // 64-255
+// @snfx allow part cooling fans to run lower than threshold current,
+//       even though current fan starts pretty low because the motherboard fan is plugged on the same pin
+//       and doesn't start under 50% minimum
+#define FAN_KICKSTART_TIME  300  // (ms)
+#define FAN_KICKSTART_POWER 200  // 64-255
 
 // Some coolers may require a non-zero "off" state.
 //#define FAN_OFF_PWM  1
