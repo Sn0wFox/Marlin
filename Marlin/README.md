@@ -51,7 +51,7 @@ So yeah. I don't know, but I have a fix. Just run the file `pre-level.gcode` fir
 and that will do it.
 
 As a bonus, turns out:
-- G26 after doesn't work, so will have to use a custom test gcode to test it
+- G26 doesn't automatically run, so will have to use a custom test gcode to test it
 - pre-heating before bed leveling just doesn't happen (previous gcode also fixes that)
 
 Bed leveling with a 0.1mm Feeler gauge after rough tramming (visual mostly)
