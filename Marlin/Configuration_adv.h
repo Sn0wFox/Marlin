@@ -1135,7 +1135,8 @@
  * Enable DISABLE_IDLE_* to shut down axis steppers after an idle period.
  * The default timeout duration can be overridden with M18 and M84. Set to 0 for No Timeout.
  */
-#define DEFAULT_STEPPER_TIMEOUT_SEC 120
+// @snfx something deactivates the steppers anyway, so let's try to remove the timeout all together
+#define DEFAULT_STEPPER_TIMEOUT_SEC 0
 // @snfx all steppers are wired together so have to disable them all!
 //#define DISABLE_IDLE_X
 //#define DISABLE_IDLE_Y
