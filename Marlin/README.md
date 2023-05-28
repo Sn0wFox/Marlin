@@ -22,6 +22,7 @@ Piece of doc for custom config.
   * `Configuration.h`
   * `Configuration_adv.h` (for adjustments and board specific settings)
   * some cpp files, such as `src/lcd/menu/menu_advanced.cpp`
+  * `platformio.ini` (for default compilation settings)
 
 ⚠️ You should take a look at the default settings (use the correct branch):
 * [basic](https://github.com/MarlinFirmware/Configurations/blob/import-2.1.x/config/examples/Creality/Ender-5%20Pro/CrealityV427/Configuration.h)
