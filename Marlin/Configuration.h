@@ -1938,6 +1938,7 @@
  * Auto-leveling needs preheating
  */
 // @snfx cold bed level sucks a bit
+// @snfx does NOT work at the moment
 #define PREHEAT_BEFORE_LEVELING
 #if ENABLED(PREHEAT_BEFORE_LEVELING)
   // @snfx don't want to burn my hands and this has minimal impact beside thermal expansion of the nozzle,
