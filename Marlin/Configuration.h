@@ -1305,7 +1305,8 @@
  *   https://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-  #define JUNCTION_DEVIATION_MM 0.013 // (mm) Distance from real junction edge
+  // @snfx d=0.4jˆ2/accel (see links above) -> so computed for an equivalent jerk of 10mm/s with default acceleration of 1200mm/sˆ2
+  #define JUNCTION_DEVIATION_MM 0.033 // (mm) Distance from real junction edge
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
                                       // for small segments (< 1mm) with large junction angles (> 135°).
 #endif
