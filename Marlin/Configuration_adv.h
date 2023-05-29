@@ -3792,33 +3792,60 @@
 // @section custom main menu
 
 // Custom Menu: Main Menu
-//#define CUSTOM_MENU_MAIN
+// @snfx let's gooo
+#define CUSTOM_MENU_MAIN
 #if ENABLED(CUSTOM_MENU_MAIN)
-  //#define CUSTOM_MENU_MAIN_TITLE "Custom Commands"
-  #define CUSTOM_MENU_MAIN_SCRIPT_DONE "M117 User Script Done"
+  #define CUSTOM_MENU_MAIN_TITLE "Maintenance"
+  #define CUSTOM_MENU_MAIN_SCRIPT_DONE "M117 Maintenance routine done"
   #define CUSTOM_MENU_MAIN_SCRIPT_AUDIBLE_FEEDBACK
-  //#define CUSTOM_MENU_MAIN_SCRIPT_RETURN   // Return to status screen after a script
-  #define CUSTOM_MENU_MAIN_ONLY_IDLE         // Only show custom menu when the machine is idle
+  #define CUSTOM_MENU_MAIN_SCRIPT_RETURN   // Return to status screen after a script
+  #define CUSTOM_MENU_MAIN_ONLY_IDLE       // Only show custom menu when the machine is idle
 
-  #define MAIN_MENU_ITEM_1_DESC "Home & UBL Info"
-  #define MAIN_MENU_ITEM_1_GCODE "G28\nG29 W"
+  #define WAIT_PLATE(t)  "M190 S"#t
+  #define WAIT_HOTEND(t) "M109 S"#t
+
+  #define _SETUP          "M204 P1200.00 R1000.00 T1200.00\nM205 X10.00 Y10.00 Z0.40 E5.00\nG28\n"
+  #define _HEAT_PLATE(t)  "M140 S"#t"\nM105\n"
+  #define _HEAT_HOTEND(t) "M104 S"#t"\nM105\n"
+  #define _PRE_EXTRUDE(t) _HEAT_HOTEND(t) _SETUP "G90\nG0 Z50.0 F600\nG0 Y110.0 F3000\n" WAIT_HOTEND(t) "\nG92 E0\n"
+
+  #define LOAD(t)  _PRE_EXTRUDE(t) "G1 E70.0 F240"
+  #define PURGE(t) _PRE_EXTRUDE(t) "G1 E120.0 F240\nG92 E0\nG1 E-0.5 F240\nG1 E20.0 F240\nG92 E0\nG1 E-0.5 F240\nG1 E3.0 F240\nG1 E2.5 F240\nG1 E5.0 F240\nG1 E4.5 F240\nG1 E7.0 F240\nG1 E6.5 F240\nG1 E9.0 F240\nG1 E8.5 F240\nG1 E15.0 F240"
+
+
+  #define MAIN_MENU_ITEM_1_DESC "Service 100C"
+  #define MAIN_MENU_ITEM_1_GCODE _HEAT_HOTEND(100) _SETUP "G90\nG0 Z50.0 F600\nG0 Y210.0 F3000\nG0 Z260.0 F600\n" WAIT_HOTEND(100)
   //#define MAIN_MENU_ITEM_1_CONFIRM          // Show a confirmation dialog before this action
 
-  #define MAIN_MENU_ITEM_2_DESC "Preheat for " PREHEAT_1_LABEL
-  #define MAIN_MENU_ITEM_2_GCODE "M140 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)
-  //#define MAIN_MENU_ITEM_2_CONFIRM
+  #define MAIN_MENU_ITEM_2_DESC "Load 200C"
+  #define MAIN_MENU_ITEM_2_GCODE LOAD(200)
 
-  //#define MAIN_MENU_ITEM_3_DESC "Preheat for " PREHEAT_2_LABEL
-  //#define MAIN_MENU_ITEM_3_GCODE "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
-  //#define MAIN_MENU_ITEM_3_CONFIRM
+  #define MAIN_MENU_ITEM_3_DESC "Load 220C"
+  #define MAIN_MENU_ITEM_3_GCODE LOAD(220)
 
-  //#define MAIN_MENU_ITEM_4_DESC "Heat Bed/Home/Level"
-  //#define MAIN_MENU_ITEM_4_GCODE "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nG28\nG29"
-  //#define MAIN_MENU_ITEM_4_CONFIRM
+  #define MAIN_MENU_ITEM_4_DESC "Load 240C"
+  #define MAIN_MENU_ITEM_4_GCODE LOAD(240)
 
-  //#define MAIN_MENU_ITEM_5_DESC "Home & Info"
-  //#define MAIN_MENU_ITEM_5_GCODE "G28\nM503"
-  //#define MAIN_MENU_ITEM_5_CONFIRM
+  #define MAIN_MENU_ITEM_5_DESC "Purge 200C"
+  #define MAIN_MENU_ITEM_5_GCODE PURGE(200)
+
+  #define MAIN_MENU_ITEM_6_DESC "Purge 210C"
+  #define MAIN_MENU_ITEM_6_GCODE PURGE(210)
+
+  #define MAIN_MENU_ITEM_7_DESC "Purge 220C"
+  #define MAIN_MENU_ITEM_7_GCODE PURGE(220)
+
+  #define MAIN_MENU_ITEM_8_DESC "Purge 230C"
+  #define MAIN_MENU_ITEM_8_GCODE PURGE(230)
+
+  #define MAIN_MENU_ITEM_9_DESC "Purge 240C"
+  #define MAIN_MENU_ITEM_9_GCODE PURGE(240)
+
+  #define MAIN_MENU_ITEM_10_DESC "Purge 250C"
+  #define MAIN_MENU_ITEM_10_GCODE PURGE(250)
+
+  #define MAIN_MENU_ITEM_11_DESC "Pre-level"
+  #define MAIN_MENU_ITEM_11_GCODE _HEAT_PLATE(65) _SETUP WAIT_PLATE(65)
 #endif
 
 // @section custom config menu
