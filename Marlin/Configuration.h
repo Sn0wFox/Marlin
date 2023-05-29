@@ -685,11 +685,11 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    // @snfx values after 20 cycles of PID autotune at 190C
-    //       (starting from bondtech firmware values, pretty close)
-    #define DEFAULT_Kp  18.00
-    #define DEFAULT_Ki   1.47
-    #define DEFAULT_Kd  55.20
+    // @snfx values after 10 cycles of PID autotune at 220C
+    //       (starting from close to bondtech firmware values from 20 cycles at 190C, still pretty close)
+    #define DEFAULT_Kp  20.50
+    #define DEFAULT_Ki   1.76
+    #define DEFAULT_Kd  59.30
   #endif
 #endif
 
