@@ -1741,12 +1741,22 @@
 // @snfx with ddx v2
 #define Y_BED_SIZE 223
 
+// @snfx custom nozzle offsets with ddx v2; used so gcode is correctly centered on the build plate
+//       Note that unreachable areas have to be entered in the slicer to avoid generating unprintable gcode,
+//       and that the total bed size should be used in the slicer as well
+#define SNFX_X_OFFSET 4
+#define SNFX_Y_OFFSET 15
+
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
-#define X_MIN_POS 0
-#define Y_MIN_POS 0
+// @snfx with ddx v2
+#define X_MIN_POS SNFX_X_OFFSET
+// @snfx with ddx v2
+#define Y_MIN_POS SNFX_Y_OFFSET
 #define Z_MIN_POS 0
-#define X_MAX_POS X_BED_SIZE
-#define Y_MAX_POS Y_BED_SIZE
+// @snfx with ddx v2
+#define X_MAX_POS (X_BED_SIZE + SNFX_X_OFFSET)
+// @snfx with ddx v2
+#define Y_MAX_POS (Y_BED_SIZE + SNFX_Y_OFFSET)
 // @snfx with ddx v2 + F8 silent case upgrade; better safe than sorry
 #define Z_MAX_POS 280
 //#define I_MIN_POS 0
