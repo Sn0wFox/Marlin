@@ -2112,8 +2112,8 @@
   //=================================== Mesh ==================================
   //===========================================================================
 
-  // @snfx 15mm seems more reasonable
-  #define MESH_INSET 15          // Set Mesh bounds as an inset region of the bed
+  // @snfx 25mm will allow us to print a custom validation pattern right on top of probed point for better accuracy
+  #define MESH_INSET 25          // Set Mesh bounds as an inset region of the bed
   // @snfx 5 should be pretty damn accurate
   #define GRID_MAX_POINTS_X 5    // Don't use more than 7 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
